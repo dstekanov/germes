@@ -2,9 +2,9 @@ package org.itsimulator.germes.app.model.entity.geography;
 
 /**
  * Value type that stores address attributes
- * of the specific office or person
- *
+ * of the specific office or person 
  * @author Morenets
+ *
  */
 public class Address {
 	private String zipCode;
@@ -14,8 +14,8 @@ public class Address {
 	private String houseNo;
 
 	/**
-	 * (Optional) Apartment number if it's address
-	 * of the apartment
+	 * (Optional) Apartment number if it's address 
+	 * of the apartment 
 	 */
 	private String apartment;
 

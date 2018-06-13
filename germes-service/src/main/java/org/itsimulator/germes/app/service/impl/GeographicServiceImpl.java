@@ -9,8 +9,8 @@ import java.util.List;
 
 /**
  * Default implementation of the {@link GeographicService}
- *
  * @author Morenets
+ *
  */
 public class GeographicServiceImpl implements GeographicService {
 	/**
@@ -19,7 +19,7 @@ public class GeographicServiceImpl implements GeographicService {
 	private final List<City> cities;
 
 	public GeographicServiceImpl() {
-		cities = new ArrayList<>();
+		cities = new ArrayList<City>();
 	}
 
 	@Override
@@ -29,9 +29,6 @@ public class GeographicServiceImpl implements GeographicService {
 
 	@Override
 	public void saveCity(City city) {
-		if (city == null) {
-			return;
-		}
 		if (! cities.contains(city)) {
 			cities.add(city);
 		}

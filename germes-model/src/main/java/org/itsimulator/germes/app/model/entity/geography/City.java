@@ -10,10 +10,10 @@ import java.util.Set;
 
 /**
  * Any locality that contains transport stations
- *
  * @author Morenets
+ *
  */
-public class City extends AbstractEntity {
+public class City extends AbstractEntity {	
 	private String name;
 
 	/**
@@ -28,8 +28,8 @@ public class City extends AbstractEntity {
 	private String region;
 
 	/**
-	 * Set of transport stations that is linked to this
-	 * loyality
+	 * Set of transport stations that is linked to this 
+	 * locality
 	 */
 	private Set<Station> stations;
 
@@ -61,7 +61,7 @@ public class City extends AbstractEntity {
 		this.region = region;
 	}
 
-	public Set<Station> getStations() {
+	public Set<Station> getStations() {		
 		return CommonUtil.getSafeSet(stations);
 	}
 
@@ -71,8 +71,7 @@ public class City extends AbstractEntity {
 
 	/**
 	 * Adds specified station to the city station list
-	 *
-	 * @param transportType
+	 * @param station
 	 */
 	public Station addStation(final TransportType transportType) {
 		if (stations == null) {
@@ -86,7 +85,6 @@ public class City extends AbstractEntity {
 
 	/**
 	 * Removes specified station from city station list
-	 *
 	 * @param station
 	 */
 	public void removeStation(Station station) {

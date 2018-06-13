@@ -7,12 +7,11 @@ import java.util.Objects;
 
 /**
  * Station where passengers can get off or take specific kind
- * of transport. Multiple stationts compose route of the trip.
- *
+ * of transport. Multiple stationts compose route of the trip.  
  * @author Morenets
+ *
  */
 public class Station extends AbstractEntity {
-
 	private City city;
 
 	private Address address;
@@ -29,11 +28,10 @@ public class Station extends AbstractEntity {
 	/**
 	 * You shouldn't create station object directly. Use
 	 * {@link City} functionality instead
-	 *
 	 * @param city
 	 * @param transportType
 	 */
-	public Station(City city, TransportType transportType) {
+	public Station(final City city, final TransportType transportType) {
 		this.city = Objects.requireNonNull(city);
 		this.transportType = Objects.requireNonNull(transportType);
 	}

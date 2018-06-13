@@ -4,8 +4,8 @@ import org.itsimulator.germes.app.infra.exception.base.AppException;
 
 /**
  * Signals about data access layer unexpected situations
- *
  * @author Morenets
+ *
  */
 public class PersistenceException extends AppException {
 

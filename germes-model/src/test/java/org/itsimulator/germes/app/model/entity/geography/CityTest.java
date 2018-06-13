@@ -4,21 +4,23 @@ import org.itsimulator.germes.app.model.entity.transport.TransportType;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Contains unit-tests to check functionality of {@link City} class
- *
+ * 
  * @author Morenets
+ *
  */
 public class CityTest {
 	private City city;
 
 	@Before
 	public void setup() {
-		city = new City("Lviv");
+		city = new City("Odessa");
 	}
-
+	
 	@Test
 	public void testAddValidStationSuccess() {
 		Station station = city.addStation(TransportType.AUTO);
@@ -31,13 +33,13 @@ public class CityTest {
 	public void testAddStationNullTransportTypeFailure() {
 		city.addStation(null);
 
-		fail();
+		assertTrue(false);
 	}
 
 	@Test
 	public void testRemoveStationSuccess() {
-		Station station = city.addStation(TransportType.AUTO);
-
+		Station station = city.addStation(TransportType.AVIA);
+		
 		city.removeStation(station);
 
 		assertTrue(city.getStations().isEmpty());
@@ -47,9 +49,9 @@ public class CityTest {
 	public void testRemoveNullStationFailure() {
 		city.removeStation(null);
 
-		fail();
+		assertTrue(false);
 	}
-
+	
 	private boolean containsStation(City city, Station station) {
 		return city.getStations().contains(station);
 	}

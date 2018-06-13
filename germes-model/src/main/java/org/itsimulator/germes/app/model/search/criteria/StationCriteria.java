@@ -6,20 +6,31 @@ import java.util.Objects;
 
 /**
  * Filtering criteria for search stations operation
+ * @author Morenets
  *
- * @author Stekanov
  */
 public class StationCriteria {
-
 	/**
 	 * City's name
 	 */
 	private String name;
+
 	private TransportType transportType;
+
 	/**
 	 * Station's address: street, zipCode, building number
 	 */
 	private String address;
+
+	/**
+	 * Returns filtering criteria to search stations that
+	 * contains specified name parameter
+	 * @param name
+	 * @return
+	 */
+	public static StationCriteria byName(String name) {
+		return new StationCriteria(name);
+	}
 
 	public StationCriteria() {
 	}
@@ -31,18 +42,7 @@ public class StationCriteria {
 	public StationCriteria(final TransportType transportType) {
 		this.transportType = Objects.requireNonNull(transportType);
 	}
-
-	/**
-	 * Returns filtering criteria to search stations that
-	 * contains specified name parameter
-	 *
-	 * @param name
-	 * @return StationCriteria
-	 */
-	public static StationCriteria byName(String name) {
-		return new StationCriteria(name);
-	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -66,4 +66,5 @@ public class StationCriteria {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 }

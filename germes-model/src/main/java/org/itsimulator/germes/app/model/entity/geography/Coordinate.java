@@ -2,8 +2,8 @@ package org.itsimulator.germes.app.model.entity.geography;
 
 /**
  * Geographical coordinate of an object
- *
  * @author Morenets
+ *
  */
 public class Coordinate {
 	private double x;

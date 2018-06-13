@@ -12,8 +12,8 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Contain unit-tests for {@link GeographicServiceImpl}
- *
  * @author Morenets
+ *
  */
 public class GeographicServiceImplTest {
 	private GeographicService service;
@@ -37,13 +37,5 @@ public class GeographicServiceImplTest {
 		List<City> cities = service.findCities();
 		assertEquals(cities.size(), 1);
 		assertEquals(cities.get(0).getName(), "Odessa");
-	}
-
-	@Test
-	public void testSaveNullCitySuccess() {
-		service.saveCity(null);
-
-		List<City> cities = service.findCities();
-		assertEquals(cities.size(), 0);
 	}
 }

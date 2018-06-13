@@ -4,8 +4,8 @@ import org.itsimulator.germes.app.infra.exception.base.AppException;
 
 /**
  * Signals about exceptional cases in the application logic
- *
  * @author Morenets
+ *
  */
 public class FlowException extends AppException {
 

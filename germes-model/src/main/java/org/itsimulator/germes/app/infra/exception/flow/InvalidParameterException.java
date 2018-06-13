@@ -4,8 +4,8 @@ import org.itsimulator.germes.app.infra.exception.FlowException;
 
 /**
  * Signals that incorrect parameter was passed to method/constructor
- *
  * @author Morenets
+ *
  */
 public class InvalidParameterException extends FlowException {
 
@@ -13,5 +13,5 @@ public class InvalidParameterException extends FlowException {
 
 	public InvalidParameterException(String message) {
 		super(message);
-	}
+	}	
 }

@@ -7,30 +7,29 @@ import java.util.Set;
 
 /**
  * Contains utility functions of the general purpose
- *
  * @author Morenets
+ *
  */
 public class CommonUtil {
 	private CommonUtil() {
 	}
-
+	
 	/**
 	 * Returns not-null unmodifiable copy of the source set
-	 *
-	 * @param source Set
-	 * @return unmodifiableSet
+	 * @param source
+	 * @return
 	 */
 	public static <T> Set<T> getSafeSet(Set<T> source) {
-		return Collections.unmodifiableSet(Optional.ofNullable(source).orElseGet(Collections::emptySet));
+		return Collections.unmodifiableSet(Optional.ofNullable(source).orElse(Collections.emptySet()));
 	}
 
 	/**
 	 * Returns not-null unmodifiable copy of the source list
-	 *
-	 * @param source List
-	 * @return unmodifiableList
+	 * @param source
+	 * @return
 	 */
 	public static <T> List<T> getSafeList(List<T> source) {
-		return Collections.unmodifiableList(Optional.ofNullable(source).orElseGet(Collections::emptyList));
+		return Collections.unmodifiableList(Optional.ofNullable(source).orElse(Collections.emptyList()));
 	}
+	
 }

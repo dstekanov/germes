@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 /**
  * Base class for all business entities
- *
  * @author Morenets
+ *
  */
 public abstract class AbstractEntity {
 	/**
@@ -31,7 +31,7 @@ public abstract class AbstractEntity {
 	private Account createdBy;
 
 	/**
-	 * Last person who modified entity
+	 * Last person who modified entity 
 	 */
 	private Account modifiedBy;
 
