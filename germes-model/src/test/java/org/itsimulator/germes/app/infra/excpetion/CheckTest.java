@@ -1,4 +1,4 @@
-package org.itsimulator.germes.app.excpetion;
+package org.itsimulator.germes.app.infra.excpetion;
 
 import org.itsimulator.germes.app.infra.exception.flow.InvalidParameterException;
 import org.itsimulator.germes.app.infra.util.Checks;
