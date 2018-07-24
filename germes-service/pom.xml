@@ -8,10 +8,6 @@
     </parent>
     <artifactId>germes-service</artifactId>
 
-    <properties>
-        <powermock.version>1.6.4</powermock.version>
-    </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
