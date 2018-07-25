@@ -17,6 +17,7 @@ import static org.junit.Assert.assertNotNull;
  * @author Morenets
  */
 public class SimpleDTOTransformerTest {
+
 	private Transformer transformer;
 
 	@Before
