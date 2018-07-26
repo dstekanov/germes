@@ -17,6 +17,10 @@ import java.util.Objects;
 @Table(name = "STATION")
 @Entity
 public class Station extends AbstractEntity {
+	public static final String FIELD_TRANSPORT_TYPE = "transportType";
+
+	public static final String FIELD_CITY = "city";
+
 	private City city;
 
 	private Address address;
@@ -29,6 +33,9 @@ public class Station extends AbstractEntity {
 	private Coordinate coordinate;
 
 	private TransportType transportType;
+
+	public Station() {
+	}
 
 	/**
 	 * You shouldn't create station object directly. Use
@@ -46,6 +53,10 @@ public class Station extends AbstractEntity {
 	@JoinColumn(name = "CITY_ID")
 	public City getCity() {
 		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
 	}
 
 	@Embedded
@@ -79,6 +90,10 @@ public class Station extends AbstractEntity {
 	@Column(nullable = false, name = "TRANSPORT_TYPE")
 	public TransportType getTransportType() {
 		return transportType;
+	}
+
+	public void setTransportType(TransportType transportType) {
+		this.transportType = transportType;
 	}
 
 	/**

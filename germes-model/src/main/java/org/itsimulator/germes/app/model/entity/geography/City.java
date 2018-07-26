@@ -16,7 +16,9 @@ import java.util.Set;
  */
 @Table(name = "CITY")
 @Entity
-public class City extends AbstractEntity {	
+public class City extends AbstractEntity {
+	public static final String FIELD_NAME = "name";
+
 	private String name;
 
 	/**
