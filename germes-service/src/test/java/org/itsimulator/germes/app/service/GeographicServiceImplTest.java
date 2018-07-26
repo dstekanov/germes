@@ -5,7 +5,7 @@ import org.itsimulator.germes.app.model.entity.geography.Station;
 import org.itsimulator.germes.app.model.entity.transport.TransportType;
 import org.itsimulator.germes.app.model.search.criteria.StationCriteria;
 import org.itsimulator.germes.app.model.search.criteria.range.RangeCriteria;
-import org.itsimulator.germes.app.persistence.repository.impl.InMemoryCityRepository;
+import org.itsimulator.germes.app.persistence.repository.inmemory.InMemoryCityRepository;
 import org.itsimulator.germes.app.service.impl.GeographicServiceImpl;
 import org.junit.Before;
 import org.junit.Test;

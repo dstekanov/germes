@@ -1,4 +1,4 @@
-package org.itsimulator.germes.app.persistence.repository.impl;
+package org.itsimulator.germes.app.persistence.repository.inmemory;
 
 import org.itsimulator.germes.app.infra.util.CommonUtil;
 import org.itsimulator.germes.app.model.entity.geography.City;
