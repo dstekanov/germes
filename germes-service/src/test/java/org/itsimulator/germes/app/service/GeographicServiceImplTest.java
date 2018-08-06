@@ -60,11 +60,13 @@ public class GeographicServiceImplTest {
 
 	@Test
 	public void testSaveNewCitySuccess() {
+		int cityCount = service.findCities().size();
+
 		City city = createCity();
 		service.saveCity(city);
 
 		List<City> cities = service.findCities();
-		assertEquals(cities.size(), 5);
+		assertEquals(cities.size(), cityCount + 1);
 		assertEquals(cities.get(0).getName(), "Odessa");
 	}
 
@@ -106,6 +108,9 @@ public class GeographicServiceImplTest {
 
 	@Test
 	public void testSearchStationsByTransportTypeSuccess() {
+		int stationCount = service.searchStations(new StationCriteria(TransportType.AUTO), new RangeCriteria(1, 5))
+				.size();
+
 		City city = createCity();
 		city.addStation(TransportType.AUTO);
 		service.saveCity(city);
@@ -117,7 +122,7 @@ public class GeographicServiceImplTest {
 
 		List<Station> stations = service.searchStations(new StationCriteria(TransportType.AUTO), new RangeCriteria(1, 5));
 		assertNotNull(stations);
-		assertEquals(stations.size(), 3);
+		assertEquals(stations.size(), stationCount + 2);
 	}
 
 	@Test
