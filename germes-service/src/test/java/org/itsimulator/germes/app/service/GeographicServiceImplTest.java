@@ -51,6 +51,7 @@ public class GeographicServiceImplTest {
 	@AfterClass
 	public static void tearDown() {
 		executorService.shutdownNow();
+		service.deleteCities();
 	}
 
 	@Test
@@ -76,15 +77,15 @@ public class GeographicServiceImplTest {
 		City city = createCity();
 		service.saveCity(city);
 
-		Optional<City> foundCity = service.findCityById(DEFAULT_CITY_ID);
+		Optional<City> foundCity = service.findCityById(city.getId());
 		assertTrue(foundCity.isPresent());
-		assertEquals(foundCity.get().getId(), DEFAULT_CITY_ID);
+		assertEquals(foundCity.get().getId(), city.getId());
 	}
 
 	@Test
 	public void testFindCityByIdNotFound() {
 		Optional<City> foundCity = service.findCityById(DEFAULT_CITY_ID);
-		assertFalse(! foundCity.isPresent());
+		assertFalse(foundCity.isPresent());
 	}
 
 	@Test
@@ -160,6 +161,26 @@ public class GeographicServiceImplTest {
 	}
 
 	@Test
+	public void testSaveMultipleCitiesInBatchSuccess() {
+		int cityCount = service.findCities().size();
+		int addedCount = 5_000;
+
+		List<City> cities = new ArrayList<>(addedCount);
+
+		for (int i = 0; i < addedCount; i++) {
+			City city = new City("Odessa" + i);
+			city.setDistrict("Odessa");
+			city.setRegion("Odessa");
+			city.addStation(TransportType.AUTO);
+			cities.add(city);
+		}
+		service.saveCities(cities);
+
+		List<City> allCities = service.findCities();
+		assertEquals(allCities.size(), cityCount + addedCount);
+	}
+
+	@Test
 	public void testSaveMultipleCitiesConcurrentlySuccess() {
 		int cityCount = service.findCities().size();
 
@@ -213,6 +234,25 @@ public class GeographicServiceImplTest {
 		assertEquals(cities.size(), cityCount);
 	}
 
+	private void waitForFutures(List<Future<?>> futures) {
+		futures.forEach(future -> {
+			try {
+				future.get();
+			} catch (Exception e) {
+				fail(e.getMessage());
+			}
+		});
+	}
+
+	private City createCity() {
+		City city = new City("Odessa");
+		city.setDistrict("Odessa");
+		city.setRegion("Odessa");
+
+		return city;
+	}
+
+
 	@Test
 	public void testSaveCityMissingNameValidationExceptionThrown() {
 		try {
@@ -253,23 +293,5 @@ public class GeographicServiceImplTest {
 		} catch (ValidationException ex) {
 			assertTrue(ex.getMessage().contains("name:size must be between 2 and 32"));
 		}
-	}
-
-	private void waitForFutures(List<Future<?>> futures) {
-		futures.forEach(future -> {
-			try {
-				future.get();
-			} catch (Exception e) {
-				fail(e.getMessage());
-			}
-		});
-	}
-
-	private City createCity() {
-		City city = new City("Odessa");
-		city.setDistrict("Odessa");
-		city.setRegion("Odessa");
-
-		return city;
 	}
 }
