@@ -1,5 +1,6 @@
 package org.itsimulator.germes.app.service;
 
+import org.itsimulator.germes.app.infra.exception.flow.ValidationException;
 import org.itsimulator.germes.app.model.entity.geography.City;
 import org.itsimulator.germes.app.model.entity.geography.Station;
 import org.itsimulator.germes.app.model.entity.transport.TransportType;
@@ -210,6 +211,48 @@ public class GeographicServiceImplTest {
 
 		List<City> cities = service.findCities();
 		assertEquals(cities.size(), cityCount);
+	}
+
+	@Test
+	public void testSaveCityMissingNameValidationExceptionThrown() {
+		try {
+			City city = new City();
+			city.setDistrict("Nikolaev");
+			city.setRegion("Nikolaev");
+			service.saveCity(city);
+
+			fail("City name validation failed");
+		} catch (ValidationException ex) {
+			assertTrue(ex.getMessage().contains("name:may not be null"));
+		}
+	}
+
+	@Test
+	public void testSaveCityNameTooShortValidationExceptionThrown() {
+		try {
+			City city = new City("N");
+			city.setDistrict("Nikolaev");
+			city.setRegion("Nikolaev");
+			service.saveCity(city);
+
+			fail("City name validation failed");
+		} catch (ValidationException ex) {
+			assertTrue(ex.getMessage().contains("name:size must be between 2 and 32"));
+		}
+	}
+
+	@Test
+	public void testSaveCityNameTooLongValidationExceptionThrown() {
+		try {
+			City city = new City("N1234567890123456789012345678901234567890");
+			city.setDistrict("Nikolaev");
+			city.setRegion("Nikolaev");
+			service.saveCity(city);
+
+			fail("City name validation failed");
+		} catch (ValidationException ex) {
+			assertTrue(ex.getMessage().contains("name:size must be between 2 and 32"));
+		}
 	}
 
 	private void waitForFutures(List<Future<?>> futures) {

@@ -29,6 +29,7 @@ public class SessionFactoryBuilder {
 		MetadataSources sources = new MetadataSources(registry);
 
 		Reflections reflections = new Reflections("org.itsimulator.germes.app.model.entity");
+
 		Set<Class<?>> entityClasses = reflections.getTypesAnnotatedWith(Entity.class);
 		entityClasses.forEach(sources::addAnnotatedClass);
 
