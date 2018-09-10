@@ -1,0 +1,17 @@
+{
+  "name": "germes-js",
+  "homepage": "https://github.com/dstekanov/germes",
+  "authors": [
+    "Dmytro_Stekanov <dstekanov@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
