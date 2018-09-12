@@ -9,3 +9,6 @@ target/
 .gradle
 service.log
 **/build
+gradle
+bower_components/
+*.iml
