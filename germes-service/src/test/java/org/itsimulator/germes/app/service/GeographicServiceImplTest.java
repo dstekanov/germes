@@ -55,12 +55,6 @@ public class GeographicServiceImplTest {
 	}
 
 	@Test
-	public void testNoDataReturnedAtStart() {
-		List<City> cities = service.findCities();
-		assertTrue(! cities.isEmpty());
-	}
-
-	@Test
 	public void testSaveNewCitySuccess() {
 		int cityCount = service.findCities().size();
 
