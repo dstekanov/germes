@@ -10,5 +10,6 @@ service.log
 **/build
 gradle
 bower_components/
+node_modules/
 *.iml
 .gradle
