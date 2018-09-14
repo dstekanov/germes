@@ -1,9 +1,10 @@
 describe('Testing City Controller', function () {
     beforeEach(module("app"));
 
-    var scope = {};
-    beforeEach(inject(function ($controller) {
+    var scope = {}, httpBackend;
+    beforeEach(inject(function ($controller, $httpBackend) {
         $controller('CityCtrl', {$scope: scope});
+        httpBackend = $httpBackend;
     }));
 
     afterEach(function () {
@@ -33,5 +34,21 @@ describe('Testing City Controller', function () {
         };
         var center = scope.isRegionCenter(city);
         expect(center).toBeTruthy();
+    });
+
+    it('Should query cities', function () {
+
+        httpBackend.expectGET("/api/cities").respond(
+            [
+                {
+                    'name': 'Odessa',
+                    'district': '',
+                    'region': 'Odessa'
+                }
+            ]);
+        httpBackend.flush();
+        expect(scope.cities[0].name).toBe('Odessa');
+        expect(scope.cities[0].district).toBe('');
+        expect(scope.cities[0].region).toBe('Odessa');
     });
 });
