@@ -37,7 +37,10 @@ describe('Testing City Controller', function () {
     });
 
     it('Should query cities', function () {
-
+        httpBackend.expectGET("l10n/locale-en.json").respond(
+            [
+                {}
+            ]);
         httpBackend.expectGET("/api/cities").respond(
             [
                 {
