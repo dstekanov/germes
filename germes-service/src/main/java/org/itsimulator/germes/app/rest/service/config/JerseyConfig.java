@@ -17,8 +17,14 @@ import javax.ws.rs.ApplicationPath;
  * @author Morenets
  */
 @ApplicationPath("api")
-@SwaggerDefinition(info = @Info(description = "Booking and purchasing API definition", title = "Germes project", version = "0.7.0",
-		contact = @Contact(email = "dstekanov.tech@gmail.com", name = "Dmytro Stekanov", url = "http://it-simulator.com")))
+@SwaggerDefinition(
+        info = @Info(
+                description = "Booking and purchasing API definition",
+                title = "Germes project", version = "0.7.0",
+                contact = @Contact(
+                        email = "dstekanov.tech@gmail.com",
+                        name = "Dmytro Stekanov",
+                        url = "http://it-simulator.com")))
 public class JerseyConfig extends ResourceConfig {
 
 	public JerseyConfig() {
