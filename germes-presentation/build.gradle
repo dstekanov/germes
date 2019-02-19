@@ -1,39 +1,38 @@
 plugins {
-    id 'com.craigburke.karma' version '1.4.3'
+    id 'com.craigburke.karma' version '1.4.3'	
 }
+
 apply plugin: 'org.akhikhl.gretty'
 apply plugin: 'war'
 
 dependencies {
-    compile project(':germes-service')
-    runtime 'com.h2database:h2:1.4.191'
+    compile project(':germes-rest')
+    runtime 'com.h2database:h2:' + h2Version
 }
 
 gretty {
-    contextPath = ''
-    servletContainer = 'tomcat8'
+	contextPath = ''
+	servletContainer = 'tomcat8'
 }
 
 karma {
-    basePath = '../src/main/webapp'
-    colors = true
+    basePath = '../src/main/webapp' 
+    colors = true 
     logLevel = 'INFO'
-    profile 'default'
-
-    browsers = ['Chrome']
-    frameworks = ['jasmine']
+    profile 'default' 
+    
+    browsers = ['Chrome'] 
+    frameworks = ['jasmine'] 
     reporters = ['progress']
-    profile('default') {
+    profile('default')  {
         libraryBases = ['bower_components/']
         libraryFiles = ['angular/angular.js', 'angular-mocks/angular-mocks.js', 'angular-resource/angular-resource.js',
-                        'angular-translate/angular-translate.js']
+        	'angular-translate/angular-translate.js', 'angular-translate-loader-static-files/angular-translate-loader-static-files.js'] 
 
         sourceBases = ['js/']
-        sourceFiles = ['*.js']
+        sourceFiles = ['*.js'] 
 
         testBases = ['test/unit/']
-        testFiles = ['*.js']
-    }
+        testFiles = ['*.js'] 
+    }    
 }
-
-//karmaRun.dependsOn test

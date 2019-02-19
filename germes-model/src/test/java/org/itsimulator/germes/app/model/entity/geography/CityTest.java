@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 public class CityTest {
 	private City city;
 
-	@Before
+    @Before
 	public void setup() {
 		city = new City("Odessa");
 	}
@@ -29,7 +29,7 @@ public class CityTest {
 		assertEquals(city, station.getCity());
 	}
 
-	@Test(expected = NullPointerException.class)
+    @Test(expected = NullPointerException.class)
 	public void testAddStationNullTransportTypeFailure() {
 		city.addStation(null);
 
@@ -45,7 +45,7 @@ public class CityTest {
 		assertTrue(city.getStations().isEmpty());
 	}
 
-	@Test(expected = NullPointerException.class)
+    @Test(expected = NullPointerException.class)
 	public void testRemoveNullStationFailure() {
 		city.removeStation(null);
 

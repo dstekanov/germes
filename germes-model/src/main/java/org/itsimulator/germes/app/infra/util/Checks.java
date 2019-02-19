@@ -3,14 +3,14 @@ package org.itsimulator.germes.app.infra.util;
 import org.itsimulator.germes.app.infra.exception.flow.InvalidParameterException;
 
 /**
- * Contains common check routines
- *
+ * Contains common check routines 
  * @author Morenets
+ *
  */
 public class Checks {
-	private Checks() {
-	}
-
+    private Checks() {
+    }
+	
 	/**
 	 * Verifies that specified check passed and throws exception otherwise
 	 * @param check
@@ -19,7 +19,7 @@ public class Checks {
 	 */
 	public static void checkParameter(boolean check, String message)
 			throws InvalidParameterException {
-		if (! check) {
+        if (!check) {
 			throw new InvalidParameterException(message);
 		}
 	}

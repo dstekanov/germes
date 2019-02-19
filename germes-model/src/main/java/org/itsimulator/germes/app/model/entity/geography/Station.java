@@ -9,17 +9,20 @@ import javax.persistence.*;
 import java.util.Objects;
 
 /**
- * Station where passengers can get off or take specific kind
- * of transport. Multiple stationts compose route of the trip.
- *
+ * Station where passengers can get off or take specific kind of transport.
+ * Multiple stationts compose route of the trip.
+ * 
  * @author Morenets
+ *
  */
 @Table(name = "STATION")
 @Entity
 @NamedQuery(name = Station.QUERY_DELETE_ALL, query = "delete from Station")
 public class Station extends AbstractEntity {
 	public static final String FIELD_TRANSPORT_TYPE = "transportType";
+
 	public static final String FIELD_CITY = "city";
+
 	public static final String QUERY_DELETE_ALL = "deleteStations";
 
 	private City city;
@@ -39,9 +42,9 @@ public class Station extends AbstractEntity {
 	}
 
 	/**
-	 * You shouldn't create station object directly. Use
-	 * {@link City} functionality instead
-	 *
+     * You shouldn't create station object directly. Use {@link City}
+     * functionality instead
+     *
 	 * @param city
 	 * @param transportType
 	 */
@@ -59,6 +62,10 @@ public class Station extends AbstractEntity {
 	public void setCity(City city) {
 		this.city = city;
 	}
+
+    public void setTransportType(TransportType transportType) {
+        this.transportType = transportType;
+    }
 
 	@Embedded
 	public Address getAddress() {
@@ -87,26 +94,23 @@ public class Station extends AbstractEntity {
 		this.coordinate = coordinate;
 	}
 
-	@Enumerated(EnumType.STRING)
+    @Enumerated
 	@Column(nullable = false, name = "TRANSPORT_TYPE")
 	public TransportType getTransportType() {
 		return transportType;
 	}
 
-	public void setTransportType(TransportType transportType) {
-		this.transportType = transportType;
-	}
-
 	/**
 	 * Verifies if current station matches specified criteria
-	 *
+     *
 	 * @param criteria
 	 * @return
 	 */
 	public boolean match(final StationCriteria criteria) {
 		Objects.requireNonNull(criteria, "Station criteria is not initialized");
-		if (! StringUtils.isEmpty(criteria.getName())) {
-			if (! city.getName().equals(criteria.getName())) {
+
+        if (!StringUtils.isEmpty(criteria.getName())) {
+            if (!city.getName().equals(criteria.getName())) {
 				return false;
 			}
 		}
@@ -134,7 +138,7 @@ public class Station extends AbstractEntity {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (! super.equals(obj))
+        if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
@@ -142,15 +146,16 @@ public class Station extends AbstractEntity {
 		if (address == null) {
 			if (other.address != null)
 				return false;
-		} else if (! address.equals(other.address))
+        } else if (!address.equals(other.address))
 			return false;
 		if (city == null) {
 			if (other.city != null)
 				return false;
-		} else if (! city.equals(other.city))
+        } else if (!city.equals(other.city))
 			return false;
 		if (transportType != other.transportType)
 			return false;
 		return true;
 	}
+
 }

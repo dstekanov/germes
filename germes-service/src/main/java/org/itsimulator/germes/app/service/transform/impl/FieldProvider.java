@@ -6,8 +6,8 @@ import java.util.List;
 
 /**
  * Base functionality of the field preparation
- *
  * @author Morenets
+ *
  */
 public class FieldProvider {
 	public List<String> getFieldNames(Class<?> source, Class<?> dest) {

@@ -12,11 +12,11 @@ import static org.junit.Assert.*;
 
 /**
  * Verifies functionality of the {@link ReflectionUtil} unit
- *
+ * 
  * @author Morenets
+ *
  */
 public class ReflectionUtilTest {
-
 	@Test
 	public void createInstanceSuccess() {
 		Object value = ReflectionUtil.createInstance(Source.class);
@@ -24,12 +24,12 @@ public class ReflectionUtilTest {
 	}
 
 	@Test(expected = ConfigurationException.class)
-	public void createInstanceFailure() {
+    public void testCreateInstanceFailure() {
 		ReflectionUtil.createInstance(Restricted.class);
 	}
 
 	@Test
-	public void findSimilarFieldsSuccess() {
+    public void testFindSimilarFieldsSuccess() {
 		List<String> fields = ReflectionUtil.findSimilarFields(Source.class,
 				Destination.class);
 		assertNotNull(fields);
@@ -37,7 +37,7 @@ public class ReflectionUtilTest {
 	}
 
 	@Test
-	public void copyFieldsSuccess() {
+    public void testCopyFieldsSuccess() {
 		Source src = new Source();
 		src.setValue(10);
 		Destination dest = new Destination();
@@ -47,7 +47,7 @@ public class ReflectionUtilTest {
 		assertEquals(dest.getValue(), 10);
 	}
 
-	@Test
+    @Test
 	public void copyFindSimilarFieldsWithIgnoreSuccess() {
 		List<String> fields = ReflectionUtil.findSimilarFields(Source.class, Destination.class);
 		assertFalse(fields.contains("ignored"));
@@ -66,11 +66,11 @@ public class ReflectionUtilTest {
 		assertTrue(fields.contains("baseField"));
 	}
 
-	@Test(expected = InvalidParameterException.class)
+    @Test(expected = InvalidParameterException.class)
 	public void copyFieldsDestinationNullFailure() {
 		Source src = new Source();
 		ReflectionUtil.copyFields(src, null, Collections.emptyList());
-	}
+    }
 }
 
 class BaseSource {
@@ -86,12 +86,12 @@ class Source extends BaseSource {
 
 	private String text;
 
-	@Ignore
+    @Ignore
 	private int ignored = 2;
 
-	private static int staticField;
+    private static int staticField;
 
-	private final int finalField = 0;
+    private final int finalField = 0;
 
 	public void setValue(int value) {
 		this.value = value;
@@ -101,11 +101,11 @@ class Source extends BaseSource {
 class Destination extends BaseDestination {
 	private int value;
 
-	private int ignored;
+    private int ignored;
 
-	private int staticField;
+    private int staticField;
 
-	private int finalField = 0;
+    private int finalField = 0;
 
 	public int getValue() {
 		return value;

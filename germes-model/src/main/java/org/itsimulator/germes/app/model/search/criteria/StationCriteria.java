@@ -22,7 +22,7 @@ public class StationCriteria {
 	 */
 	private String address;
 
-	/**
+    /**
 	 * Returns filtering criteria to search stations that
 	 * contains specified name parameter
 	 * @param name
@@ -32,14 +32,14 @@ public class StationCriteria {
 		return new StationCriteria(name);
 	}
 
-	public StationCriteria() {
+    public StationCriteria() {
 	}
 
 	private StationCriteria(final String name) {
 		this.name = Objects.requireNonNull(name);
 	}
 
-	public StationCriteria(final TransportType transportType) {
+    public StationCriteria(final TransportType transportType) {
 		this.transportType = Objects.requireNonNull(transportType);
 	}
 	

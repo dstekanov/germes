@@ -3,7 +3,6 @@ package org.itsimulator.germes.app.persistence.hibernate.dialect.identity;
 import org.hibernate.dialect.identity.IdentityColumnSupportImpl;
 
 public class SQLiteDialectIdentityColumnSupport extends IdentityColumnSupportImpl {
-
 	@Override
 	public boolean supportsIdentityColumns() {
 		return true;

@@ -13,9 +13,11 @@ import org.itsimulator.germes.app.persistence.repository.hibernate.HibernateCity
 import org.itsimulator.germes.app.persistence.repository.hibernate.HibernateStationRepository;
 import org.itsimulator.germes.app.service.impl.GeographicServiceImpl;
 import org.junit.AfterClass;
-import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+import javax.validation.ConstraintViolation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,11 +25,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.*;
 
 /**
  * Contain unit-tests for {@link GeographicServiceImpl}
+ * 
  * @author Morenets
  *
  */
@@ -38,8 +40,8 @@ public class GeographicServiceImplTest {
 
 	private static ExecutorService executorService;
 
-	@Before
-	public void setup() {
+    @BeforeClass
+    public static void setup() {
 		SessionFactoryBuilder builder = new SessionFactoryBuilder();
 		CityRepository repository = new HibernateCityRepository(builder);
 		StationRepository stationRepository = new HibernateStationRepository(builder);
@@ -51,8 +53,15 @@ public class GeographicServiceImplTest {
 	@AfterClass
 	public static void tearDown() {
 		executorService.shutdownNow();
-		service.deleteCities();
+
+        service.deleteCities();
 	}
+
+    @Test
+    public void testNoDataReturnedAtStart() {
+        List<City> cities = service.findCities();
+        assertTrue(!cities.isEmpty());
+    }
 
 	@Test
 	public void testSaveNewCitySuccess() {
@@ -63,33 +72,35 @@ public class GeographicServiceImplTest {
 
 		List<City> cities = service.findCities();
 		assertEquals(cities.size(), cityCount + 1);
-		assertEquals(cities.get(0).getName(), "Odessa");
 	}
 
 	@Test
+    @Ignore
 	public void testFindCityByIdSuccess() {
 		City city = createCity();
 		service.saveCity(city);
 
-		Optional<City> foundCity = service.findCityById(city.getId());
+        Optional<City> foundCity = service.findCitiyById(DEFAULT_CITY_ID);
 		assertTrue(foundCity.isPresent());
-		assertEquals(foundCity.get().getId(), city.getId());
+        assertEquals(foundCity.get().getId(), DEFAULT_CITY_ID);
 	}
 
 	@Test
 	public void testFindCityByIdNotFound() {
-		Optional<City> foundCity = service.findCityById(DEFAULT_CITY_ID);
-		assertFalse(foundCity.isPresent());
+        Optional<City> foundCity = service.findCitiyById(1_000_000);
+        assertTrue(!foundCity.isPresent());
 	}
 
 	@Test
 	public void testSearchStationsByNameSuccess() {
-		City city = createCity();
+        City city = new City("Zhytomyr");
+        city.setDistrict("Zhytomyr");
+        city.setRegion("Zhytomyr");
 		city.addStation(TransportType.AUTO);
 		city.addStation(TransportType.RAILWAY);
 		service.saveCity(city);
 
-		List<Station> stations = service.searchStations(StationCriteria.byName("Odessa"), new RangeCriteria(1, 5));
+        List<Station> stations = service.searchStations(StationCriteria.byName("Zhytomyr"), new RangeCriteria(1, 5));
 		assertNotNull(stations);
 		assertEquals(stations.size(), 2);
 		assertEquals(stations.get(0).getCity(), city);
@@ -116,7 +127,8 @@ public class GeographicServiceImplTest {
 		city2.addStation(TransportType.AUTO);
 		service.saveCity(city2);
 
-		List<Station> stations = service.searchStations(new StationCriteria(TransportType.AUTO), new RangeCriteria(1, 5));
+        List<Station> stations = service.searchStations(new StationCriteria(TransportType.AUTO),
+                new RangeCriteria(1, 5));
 		assertNotNull(stations);
 		assertEquals(stations.size(), stationCount + 2);
 	}
@@ -127,21 +139,23 @@ public class GeographicServiceImplTest {
 		city.addStation(TransportType.AUTO);
 		service.saveCity(city);
 		City city2 = new City("Kiev");
+        city2.setDistrict("Kiev");
+        city2.setRegion("Kiev");
 		city2.setId(2);
 		city2.addStation(TransportType.RAILWAY);
 		service.saveCity(city2);
 
-		List<Station> stations = service.searchStations(new StationCriteria(TransportType.AVIA), new RangeCriteria(1, 5));
+        List<Station> stations = service.searchStations(new StationCriteria(TransportType.AVIA),
+                new RangeCriteria(1, 5));
 		assertNotNull(stations);
 		assertTrue(stations.isEmpty());
 	}
-
 
 	@Test
 	public void testSaveMultipleCitiesSuccess() {
 		int cityCount = service.findCities().size();
 
-		int addedCount = 100_000;
+        int addedCount = 1_000;
 		for (int i = 0; i < addedCount; i++) {
 			City city = new City("Odessa" + i);
 			city.setDistrict("Odessa");
@@ -154,14 +168,14 @@ public class GeographicServiceImplTest {
 		assertEquals(cities.size(), cityCount + addedCount);
 	}
 
-	@Test
+    @Test
 	public void testSaveMultipleCitiesInBatchSuccess() {
 		int cityCount = service.findCities().size();
 		int addedCount = 5_000;
 
-		List<City> cities = new ArrayList<>(addedCount);
+        List<City> cities = new ArrayList<>(addedCount);
 
-		for (int i = 0; i < addedCount; i++) {
+        for (int i = 0; i < addedCount; i++) {
 			City city = new City("Odessa" + i);
 			city.setDistrict("Odessa");
 			city.setRegion("Odessa");
@@ -172,14 +186,14 @@ public class GeographicServiceImplTest {
 
 		List<City> allCities = service.findCities();
 		assertEquals(allCities.size(), cityCount + addedCount);
-	}
+    }
 
 	@Test
 	public void testSaveMultipleCitiesConcurrentlySuccess() {
 		int cityCount = service.findCities().size();
 
-		int threadCount = 200;
-		int batchCount = 10;
+        int threadCount = 20;
+        int batchCount = 5;
 
 		List<Future<?>> futures = new ArrayList<>();
 
@@ -202,6 +216,7 @@ public class GeographicServiceImplTest {
 	}
 
 	@Test
+    @Ignore
 	public void testSaveOneCityConcurrentlySuccess() {
 		City city = new City("Nikolaev");
 		city.setDistrict("Nikolaev");
@@ -211,7 +226,7 @@ public class GeographicServiceImplTest {
 
 		int cityCount = service.findCities().size();
 
-		int threadCount = 200;
+        int threadCount = 20;
 
 		List<Future<?>> futures = new ArrayList<>();
 
@@ -246,7 +261,6 @@ public class GeographicServiceImplTest {
 		return city;
 	}
 
-
 	@Test
 	public void testSaveCityMissingNameValidationExceptionThrown() {
 		try {
@@ -257,11 +271,11 @@ public class GeographicServiceImplTest {
 
 			fail("City name validation failed");
 		} catch (ValidationException ex) {
-			assertTrue(ex.getMessage().contains("name:may not be null"));
+            assertValidation(ex, "name", City.class, "{javax.validation.constraints.NotNull.message}");
 		}
 	}
 
-	@Test
+    @Test
 	public void testSaveCityNameTooShortValidationExceptionThrown() {
 		try {
 			City city = new City("N");
@@ -271,10 +285,18 @@ public class GeographicServiceImplTest {
 
 			fail("City name validation failed");
 		} catch (ValidationException ex) {
-			assertTrue(ex.getMessage().contains("name:size must be between 2 and 32"));
+            assertValidation(ex, "name", City.class, "{javax.validation.constraints.Size.message}");
 		}
 	}
 
+    private void assertValidation(ValidationException ex, String fieldName, Class<?> clz, String messageKey) {
+        assertFalse(ex.getConstraints().isEmpty());
+        ConstraintViolation<?> constraint = ex.getConstraints().iterator().next();
+        assertTrue(constraint.getMessageTemplate().equals(messageKey));
+        assertTrue(constraint.getPropertyPath().toString().equals(fieldName));
+        assertTrue(constraint.getRootBeanClass().equals(clz));
+    }
+	
 	@Test
 	public void testSaveCityNameTooLongValidationExceptionThrown() {
 		try {
@@ -285,7 +307,8 @@ public class GeographicServiceImplTest {
 
 			fail("City name validation failed");
 		} catch (ValidationException ex) {
-			assertTrue(ex.getMessage().contains("name:size must be between 2 and 32"));
-		}
-	}
+            assertValidation(ex, "name", City.class, "{javax.validation.constraints.Size.message}");
+        }
+    }
+	
 }

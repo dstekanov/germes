@@ -7,7 +7,9 @@
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-translate/angular-translate.js"></script>
-<script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script
+        src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+
 <body>
 <div ng-controller="TranslateCtrl">
     <table>
@@ -21,7 +23,9 @@
     </table>
 </div>
 <div ng-bind="'TITLE' | translate"></div>
-<div ng-controller="CityCtrl">{{'CITIES' | translate}}
+
+<div ng-controller="CityCtrl">
+    {{'CITIES' | translate}}
     <table style="width: 100%">
         <tr>
             <th ng-bind="'CITY_NAME' | translate"></th>

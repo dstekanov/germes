@@ -1,7 +1,9 @@
 .settings
+.gradle
 .springBeans
 bin
 target/
+build/
 .classpath
 .project
 .log
@@ -11,5 +13,3 @@ service.log
 gradle
 bower_components/
 node_modules/
-*.iml
-.gradle

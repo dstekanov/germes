@@ -9,7 +9,7 @@ import org.itsimulator.germes.app.infra.exception.base.AppException;
  */
 public class ConfigurationException extends AppException {
 
-	private static final long serialVersionUID = - 2177284893894040026L;
+    private static final long serialVersionUID = -2177284893894040026L;
 
 	public ConfigurationException(String message, Throwable cause) {
 		super(message, cause);
@@ -21,5 +21,5 @@ public class ConfigurationException extends AppException {
 
 	public ConfigurationException(Throwable throwable) {
 		super(throwable);
-	}
+    }
 }

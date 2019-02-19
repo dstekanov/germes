@@ -13,9 +13,9 @@ import javax.persistence.Embeddable;
 public class Address {
 	private String zipCode;
 
-	private String street;
+    private String street;
 
-	private String houseNo;
+    private String houseNo;
 
 	/**
 	 * (Optional) Apartment number if it's address 
@@ -23,7 +23,7 @@ public class Address {
 	 */
 	private String apartment;
 
-	@Column(name = "ZIP_CODE", length = 10)
+    @Column(name = "ZIP_CODE", length = 10)
 	public String getZipCode() {
 		return zipCode;
 	}

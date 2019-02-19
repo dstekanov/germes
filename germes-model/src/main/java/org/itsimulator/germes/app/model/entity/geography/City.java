@@ -13,15 +13,20 @@ import java.util.Set;
 
 /**
  * Any locality that contains transport stations
+ * 
  * @author Morenets
  *
  */
 @Table(name = "CITY")
 @Entity
-@NamedQuery(name = City.QUERY_DELETE_ALL, query = "delete from City")
+@NamedQueries({@NamedQuery(name = City.QUERY_DELETE_ALL, query = "delete from City"),
+        @NamedQuery(name = City.QUERY_FIND_ALL, query = "from City")})
 public class City extends AbstractEntity {
 	public static final String FIELD_NAME = "name";
+
 	public static final String QUERY_DELETE_ALL = "deleteCities";
+
+    public static final String QUERY_FIND_ALL = "City.findAll";
 
 	private String name;
 
@@ -31,14 +36,13 @@ public class City extends AbstractEntity {
 	private String district;
 
 	/**
-	 * Name of the region where district is located.
-	 * Region is top-level area in the country
+     * Name of the region where district is located. Region is top-level area in
+     * the country
 	 */
 	private String region;
 
 	/**
-	 * Set of transport stations that is linked to this 
-	 * locality
+     * Set of transport stations that is linked to this locality
 	 */
 	private Set<Station> stations;
 
@@ -60,19 +64,23 @@ public class City extends AbstractEntity {
 		this.name = name;
 	}
 
-	@Column(name = "DISTRICT", nullable = false, length = 32)
-	public String getDistrict() {
-		return district;
-	}
+    @NotNull
+    @Size(min = 2, max = 32)
+    @Column(name = "DISTRICT", nullable = false, length = 32)
+    public String getDistrict() {
+        return district;
+    }
 
 	public void setDistrict(String district) {
 		this.district = district;
 	}
 
-	@Column(name = "REGION", nullable = false, length = 32)
-	public String getRegion() {
-		return region;
-	}
+    @NotNull
+    @Size(min = 2, max = 32)
+    @Column(name = "REGION", nullable = false, length = 32)
+    public String getRegion() {
+        return region;
+    }
 
 	public void setRegion(String region) {
 		this.region = region;
@@ -89,7 +97,8 @@ public class City extends AbstractEntity {
 
 	/**
 	 * Adds specified station to the city station list
-	 * @param transportType
+     *
+     * @param station
 	 */
 	public Station addStation(final TransportType transportType) {
 		if (stations == null) {
@@ -103,6 +112,7 @@ public class City extends AbstractEntity {
 
 	/**
 	 * Removes specified station from city station list
+     *
 	 * @param station
 	 */
 	public void removeStation(Station station) {

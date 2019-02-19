@@ -14,12 +14,15 @@ import java.util.Set;
 
 /**
  * {@link Export} dynamically generates SQL schema
+ *
+ * @author admin
+ *
  */
 public class Export {
 	/**
 	 * Creates file with DDL statements to create project database from scratch
 	 * using specified dialect
-	 *
+     *
 	 * @param folder
 	 * @param dialect
 	 */
@@ -28,7 +31,8 @@ public class Export {
 				new StandardServiceRegistryBuilder().applySetting("hibernate.dialect", dialect.getName()).build());
 
 		Reflections reflections = new Reflections("org.itsimulator.germes.app.model.entity");
-		Set<Class<?>> entityClasses = reflections.getTypesAnnotatedWith(Entity.class);
+
+        Set<Class<?>> entityClasses = reflections.getTypesAnnotatedWith(Entity.class);
 		entityClasses.forEach(metadata::addAnnotatedClass);
 
 		SchemaExport schema = new SchemaExport();

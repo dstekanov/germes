@@ -7,8 +7,9 @@ import static org.junit.Assert.*;
 
 /**
  * Verifies functionality of {@link Checks} class
- *
+ * 
  * @author Morenets
+ *
  */
 public class ChecksTest {
 	@Test
@@ -16,7 +17,7 @@ public class ChecksTest {
 		try {
 			Checks.checkParameter(false, "test");
 
-			assertTrue(false);
+            assertTrue(false);
 		} catch (Exception ex) {
 			assertSame(ex.getClass(), InvalidParameterException.class);
 			assertEquals(ex.getMessage(), "test");

@@ -5,6 +5,19 @@ import org.itsimulator.germes.app.model.search.criteria.StationCriteria;
 
 import java.util.List;
 
+/**
+ * Defines CRUD methods to access Station objects in the persistent storage
+ *
+ * @author Morenets
+ */
 public interface StationRepository {
-	List<Station> findAllByCriteria(StationCriteria stationCriteria);
+
+    /**
+     * Returns all the stations that match specified criteria
+     *
+     * @param stationCriteria
+     * @return
+     */
+    List<Station> findAllByCriteria(StationCriteria stationCriteria);
+
 }

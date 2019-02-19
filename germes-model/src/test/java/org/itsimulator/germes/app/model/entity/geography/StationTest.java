@@ -9,17 +9,17 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Verifies functionality of the {@link Station} domain entity
- *
  * @author Morenets
+ *
  */
 public class StationTest {
 
-	@Test(expected = NullPointerException.class)
+    @Test(expected = NullPointerException.class)
 	public void testMatchCriteriaNotInitialized() {
 		City city = new City("Odessa");
 		Station station = new Station(city, TransportType.AUTO);
 
-		station.match(null);
+        station.match(null);
 	}
 
 	@Test
@@ -27,7 +27,7 @@ public class StationTest {
 		City city = new City("Odessa");
 		Station station = new Station(city, TransportType.AUTO);
 
-		assertTrue(station.match(StationCriteria.byName("Odessa")));
+        assertTrue(station.match(StationCriteria.byName("Odessa")));
 	}
 
 	@Test
@@ -35,7 +35,7 @@ public class StationTest {
 		City city = new City("Odessa");
 		Station station = new Station(city, TransportType.AUTO);
 
-		assertFalse(station.match(StationCriteria.byName("Kiev")));
+        assertFalse(station.match(StationCriteria.byName("Kiev")));
 	}
 
 }
