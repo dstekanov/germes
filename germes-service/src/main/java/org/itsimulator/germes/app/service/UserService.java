@@ -14,14 +14,14 @@ public interface UserService {
     /**
      * Saves(creates or modifies) specified user instance
      *
-     * @param city
+     * @param user
      */
     void save(User user);
 
     /**
      * Returns user with specified identifier boxed into Optional
      *
-     * @param cityId
+     * @param userId
      * @return
      */
     Optional<User> findById(int userId);
@@ -37,7 +37,7 @@ public interface UserService {
     /**
      * Delete city with specified identifier
      *
-     * @param cityId
+     * @param userId
      */
     void delete(int userId);
 
