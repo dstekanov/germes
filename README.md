@@ -1,5 +1,7 @@
 # germes
-IT-Simulator Project http://it-simulator.com/#/article/1/3
+IT-Simulator Project:
+ - part 1 http://it-simulator.com/#/article/1/3
+ - part 2 https://it-simulator.com/#/article/312/313
 
 ### Run MySQL: 
 http://it-simulator.com/#/article/1/189
