@@ -4,7 +4,7 @@ import org.itsimulator.germes.app.infra.exception.flow.InvalidParameterException
 
 /**
  * Contains common check routines 
- * @author Morenets
+ * @author Stekanov
  *
  */
 public class Checks {

@@ -5,7 +5,7 @@ package org.itsimulator.germes.app.model.transform;
  * into object kind of objects
  *
  * @param <P>
- * @author Morenets
+ * @author Stekanov
  */
 public interface Transformable<P> {
     /**

@@ -7,8 +7,8 @@ import static org.junit.Assert.*;
 
 /**
  * Verifies functionality of {@link Checks} class
- * 
- * @author Morenets
+ *
+ * @author Stekanov
  *
  */
 public class ChecksTest {

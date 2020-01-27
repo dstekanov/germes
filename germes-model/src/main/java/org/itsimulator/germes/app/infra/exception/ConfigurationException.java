@@ -4,7 +4,7 @@ import org.itsimulator.germes.app.infra.exception.base.AppException;
 
 /**
  * Signals about incorrect configuration settings/parameters
- * @author Morenets
+ * @author Stekanov
  *
  */
 public class ConfigurationException extends AppException {

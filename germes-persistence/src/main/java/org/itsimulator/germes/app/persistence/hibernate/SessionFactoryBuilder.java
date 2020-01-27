@@ -19,7 +19,7 @@ import java.util.Set;
 /**
  * Component that is responsible for managing Hibernate session factory
  *
- * @author Morenets
+ * @author Stekanov
  *
  */
 @Named

@@ -6,7 +6,7 @@ import java.util.Objects;
 
 /**
  * Filtering criteria for search stations operation
- * @author Morenets
+ * @author Stekanov
  *
  */
 public class StationCriteria {

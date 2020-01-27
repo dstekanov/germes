@@ -1,6 +1,10 @@
 package org.itsimulator.germes.app.rest.service;
 
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.itsimulator.germes.app.model.entity.geography.City;
 import org.itsimulator.germes.app.model.entity.transport.TransportType;
@@ -10,7 +14,12 @@ import org.itsimulator.germes.app.service.GeographicService;
 import org.itsimulator.germes.app.service.transform.Transformer;
 
 import javax.inject.Inject;
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -22,7 +31,7 @@ import java.util.stream.Collectors;
 /**
  * {@link CityResource} is REST web-service that handles city-related requests
  *
- * @author Morenets
+ * @author Stekanov
  *
  */
 public class CityResource extends BaseResource {

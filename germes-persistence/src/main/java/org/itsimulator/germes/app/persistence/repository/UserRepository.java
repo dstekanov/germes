@@ -8,7 +8,7 @@ import java.util.Optional;
 /**
  * Defines CRUD methods to access User objects in the persistent storage
  *
- * @author Morenets
+ * @author Stekanov
  */
 public interface UserRepository {
     /**

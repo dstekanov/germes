@@ -12,7 +12,7 @@ import javax.faces.bean.ViewScoped;
 /**
  * {@link CityBean} is value holder of the city data
  * for admin project
- * @author Morenets
+ * @author Stekanov
  *
  */
 @ManagedBean(name = "currentCity")

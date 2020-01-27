@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Verifies functionality of the {@link Station} domain entity
- * @author Morenets
+ * @author Stekanov
  *
  */
 public class StationTest {

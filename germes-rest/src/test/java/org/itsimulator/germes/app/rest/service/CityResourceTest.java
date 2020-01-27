@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
  * {@link CityResourceTest} is integration test that verifies
  * {@link CityResource}
  *
- * @author Morenets
+ * @author Stekanov
  */
 public class CityResourceTest extends JerseyTest {
     @Override

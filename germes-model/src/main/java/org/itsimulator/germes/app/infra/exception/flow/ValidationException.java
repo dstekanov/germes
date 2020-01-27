@@ -8,8 +8,8 @@ import java.util.Set;
 /**
  * {@link ValidationException} is raised when attribute values of the object
  * model violates business rules or restrictions
- * 
- * @author Morenets
+ *
+ * @author Stekanov
  *
  */
 public class ValidationException extends FlowException {

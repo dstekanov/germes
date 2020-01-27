@@ -16,7 +16,7 @@ import javax.inject.Singleton;
 
 /**
  * Binds bean implementations and implemented interfaces
- * @author Morenets
+ * @author Stekanov
  *
  */
 public class ComponentBinder extends AbstractBinder {

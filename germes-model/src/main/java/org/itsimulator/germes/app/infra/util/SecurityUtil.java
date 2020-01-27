@@ -7,7 +7,7 @@ import java.nio.charset.Charset;
 /**
  * Security and encryption-related routines
  *
- * @author Morenets
+ * @author Stekanov
  */
 public class SecurityUtil {
     private SecurityUtil() {

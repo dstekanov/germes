@@ -4,8 +4,8 @@ import org.itsimulator.germes.app.infra.util.Checks;
 
 /**
  * Pagination parameters for data retrieval operations
- * 
- * @author Morenets
+ *
+ * @author Stekanov
  *
  */
 public class RangeCriteria {

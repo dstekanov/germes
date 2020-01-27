@@ -10,7 +10,7 @@ import java.util.Locale;
 @SessionScoped
 /**
  * Keeps selected langauge for the current user
- * @author Morenets
+ * @author Stekanov
  *
  */
 public class LanguageBean {

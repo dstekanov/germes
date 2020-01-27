@@ -18,7 +18,7 @@ import java.util.List;
 @DBSource
 /**
  * Hibernate implementation of StationRepository
- * @author Morenets
+ * @author Stekanov
  *
  */
 public class HibernateStationRepository extends BaseHibernateRepository implements StationRepository {

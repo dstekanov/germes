@@ -13,7 +13,7 @@ import java.util.Optional;
 /**
  * Hibernate implementation of {@link UserRepository}
  *
- * @author Morenets
+ * @author Stekanov
  */
 @Named
 @DBSource

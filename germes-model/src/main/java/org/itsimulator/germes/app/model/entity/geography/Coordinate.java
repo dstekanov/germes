@@ -5,7 +5,7 @@ import javax.persistence.Embeddable;
 
 /**
  * Geographical coordinate of an object
- * @author Morenets
+ * @author Stekanov
  *
  */
 @Embeddable

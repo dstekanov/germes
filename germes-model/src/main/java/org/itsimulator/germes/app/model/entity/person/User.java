@@ -2,12 +2,16 @@ package org.itsimulator.germes.app.model.entity.person;
 
 import org.itsimulator.germes.app.model.entity.base.AbstractEntity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  * Entity that encapsulates user of the application
  *
- * @author Morenets
+ * @author Stekanov
  */
 @Table(name = "USER")
 @Entity

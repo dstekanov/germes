@@ -21,8 +21,8 @@ import java.util.Set;
 
 /**
  * Default implementation of the {@link GeographicService}
- * 
- * @author Morenets
+ *
+ * @author Stekanov
  *
  */
 @Named

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 /**
  * Initializes mandatory timestamp fields for the entities
  *
- * @author Morenets
+ * @author Stekanov
  */
 public class TimestampInterceptor extends EmptyInterceptor {
 

@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * This class caches field names for each transformation pair
- * @author Morenets
+ * @author Stekanov
  *
  */
 public class CachedFieldProvider extends FieldProvider {

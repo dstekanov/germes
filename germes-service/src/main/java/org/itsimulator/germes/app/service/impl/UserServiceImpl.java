@@ -15,7 +15,7 @@ import java.util.Optional;
 /**
  * Default and managed(by CDI container) implementation of UserService
  *
- * @author Morenets
+ * @author Stekanov
  *
  */
 public class UserServiceImpl implements UserService {

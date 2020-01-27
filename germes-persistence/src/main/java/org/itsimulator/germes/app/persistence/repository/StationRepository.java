@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Defines CRUD methods to access Station objects in the persistent storage
  *
- * @author Morenets
+ * @author Stekanov
  */
 public interface StationRepository {
 

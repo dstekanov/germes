@@ -5,8 +5,8 @@ import org.itsimulator.germes.app.model.transform.Transformable;
 
 /**
  * Base class for all DTO classes
- * 
- * @author Morenets
+ *
+ * @author Stekanov
  *
  */
 public abstract class BaseDTO<T extends AbstractEntity> implements Transformable<T> {

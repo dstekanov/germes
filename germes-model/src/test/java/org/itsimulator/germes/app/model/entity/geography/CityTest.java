@@ -9,8 +9,8 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Contains unit-tests to check functionality of {@link City} class
- * 
- * @author Morenets
+ *
+ * @author Stekanov
  *
  */
 public class CityTest {

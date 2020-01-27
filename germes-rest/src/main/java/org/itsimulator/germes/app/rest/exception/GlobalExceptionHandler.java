@@ -9,8 +9,8 @@ import javax.ws.rs.ext.Provider;
 
 /**
  * Global Jersey handler that catches any Exception-based errors
- * 
- * @author Morenets
+ *
+ * @author Stekanov
  *
  */
 @Provider

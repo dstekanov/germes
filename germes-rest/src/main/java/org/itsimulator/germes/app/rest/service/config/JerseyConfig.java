@@ -13,11 +13,11 @@ import javax.ws.rs.ApplicationPath;
 
 @ApplicationPath("api")
 @SwaggerDefinition(info = @Info(description = "Booking and purchasing API definition", title = "Germes project", version = "0.7.4",
-        contact = @Contact(email = "sergey.morenets@gmail.com", name = "Sergey Morenets", url = "http://it-simulator.com")))
+        contact = @Contact(email = "dstekanov@gmail.com", name = "Dmytro Stekanov", url = "http://it-simulator.com")))
 /**
  * REST web-service configuration for Jersey
  *
- * @author Morenets
+ * @author Stekanov
  *
  */
 public class JerseyConfig extends ResourceConfig {

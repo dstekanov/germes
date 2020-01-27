@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Default transformation engine that uses reflection to transform objects
- * 
- * @author Morenets
+ *
+ * @author Stekanov
  *
  */
 public class SimpleDTOTransformer implements Transformer {

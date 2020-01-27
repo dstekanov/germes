@@ -8,7 +8,7 @@ import java.util.Optional;
 /**
  * Provides API for the user management
  *
- * @author Morenets
+ * @author Stekanov
  */
 public interface UserService {
     /**

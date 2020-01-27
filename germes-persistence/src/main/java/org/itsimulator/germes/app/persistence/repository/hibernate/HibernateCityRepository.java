@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Hibernate implementation of {@link CityRepository}
  *
- * @author Morenets
+ * @author Stekanov
  */
 @Named
 @DBSource

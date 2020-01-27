@@ -10,8 +10,8 @@ import javax.ws.rs.ext.Provider;
 
 /**
  * Jersey exception handler that catches validation errors
- * 
- * @author Morenets
+ *
+ * @author Stekanov
  *
  */
 @Provider

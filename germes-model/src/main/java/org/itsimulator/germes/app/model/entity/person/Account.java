@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 /**
  * Entity that encapsulates user of the application
- * @author Morenets
+ * @author Stekanov
  *
  */
 @Table(name = "ACCOUNT")

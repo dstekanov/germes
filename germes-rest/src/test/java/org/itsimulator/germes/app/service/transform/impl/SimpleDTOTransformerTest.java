@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Verifies functionality of the {@link SimpleDTOTransformer}
  * unit
- * @author Morenets
+ * @author Stekanov
  *
  */
 public class SimpleDTOTransformerTest {

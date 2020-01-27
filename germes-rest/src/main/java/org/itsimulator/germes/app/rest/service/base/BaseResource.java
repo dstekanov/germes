@@ -4,8 +4,8 @@ import javax.ws.rs.core.Response;
 
 /**
  * Base class for all REST web-services
- * 
- * @author Morenets
+ *
+ * @author Stekanov
  *
  */
 public abstract class BaseResource {

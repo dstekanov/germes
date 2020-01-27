@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 /**
  * Value type that stores address attributes
  * of the specific office or person 
- * @author Morenets
+ * @author Stekanov
  *
  */
 @Embeddable

@@ -19,8 +19,8 @@ import static org.mockito.Mockito.when;
 
 /**
  * Verifies functionality of the {@link SimpleDTOTransformer} unit
- * 
- * @author Morenets
+ *
+ * @author Stekanov
  *
  */
 // @RunWith(PowerMockRunner.class)

@@ -6,7 +6,7 @@ import org.itsimulator.germes.app.model.transform.Transformable;
 /**
  * Represents transformation engine to convert business entities
  * into DTO objects  
- * @author Morenets
+ * @author Stekanov
  *
  */
 public interface Transformer {

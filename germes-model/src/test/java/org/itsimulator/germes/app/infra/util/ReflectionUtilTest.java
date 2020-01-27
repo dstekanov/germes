@@ -12,8 +12,8 @@ import static org.junit.Assert.*;
 
 /**
  * Verifies functionality of the {@link ReflectionUtil} unit
- * 
- * @author Morenets
+ *
+ * @author Stekanov
  *
  */
 public class ReflectionUtilTest {
