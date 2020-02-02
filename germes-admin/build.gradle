@@ -8,9 +8,9 @@ dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
 
     compile 'org.jboss.weld.servlet:weld-servlet:' + weldVersion
+    compile 'org.jboss.weld.servlet:weld-servlet-core:' + weldVersion
     runtime 'javax.enterprise:cdi-api:1.2'
     runtime 'com.h2database:h2:' + h2Version
-    compile 'org.jboss.weld.servlet:weld-servlet:' + weldVersion
     compile 'org.primefaces.themes:bootstrap:1.0.10'
     compile 'org.projectlombok:lombok:1.16.14'
     compile("org.apache.shiro:shiro-core:${apacheShiroVersion}")
@@ -30,6 +30,10 @@ repositories {
 gretty {
     contextPath = ''
     servletContainer = 'tomcat8'
+}
+
+war {
+    archiveName 'admin.war'
 }
 
 processResources {

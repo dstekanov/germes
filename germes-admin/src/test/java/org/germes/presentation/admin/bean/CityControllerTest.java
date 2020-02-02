@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 @RunWith(CdiRunner.class)
 /**
  * Verifies functionality of CityController
- * using Mockito for producing dependecy mocks
+ * using Mockito for producing dependency mocks
  *
  */
 public class CityControllerTest {

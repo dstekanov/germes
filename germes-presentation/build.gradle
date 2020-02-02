@@ -15,6 +15,10 @@ gretty {
 	servletContainer = 'tomcat8'
 }
 
+war {
+    archiveName 'ui.war'
+}
+
 karma {
     basePath = '../src/main/webapp' 
     colors = true 

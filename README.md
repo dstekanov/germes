@@ -6,5 +6,13 @@ IT-Simulator Project:
 ### Run MySQL: 
 http://it-simulator.com/#/article/1/189
 
-docker run --name germes -v /mnt/sda1/var/mysql_data:/var/lib/mysql -p 3306:3306 -e MYSQL_USER=germes -e MYSQL_PASSWORD=germes -e MYSQL_DATABASE=germes -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
-docker exec -it germes bash
+Build from dockerfile:
+    
+    docker build -t germes/mysql -f mysql.dockerfile --no-cache=true .
+    
+Run:
+
+    docker run -e MYSQL_ROOT_PASSWORD=secret_pw -p 3307:3306 --name=germes_db --memory=512M --cpus=1 -v c:/data:/var/lib/mysql germes/mysql
+    
+    docker exec -it germes /bin/sh
+
